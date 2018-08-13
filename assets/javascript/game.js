@@ -19,6 +19,7 @@ $(document).ready(function() {
     function resetVals(arr,min1,max1,min2,max2) {
         arr = genRandCrysVals(arr, min1, max1)
         $("#cum-sum").text("0");
+        $("#score-button").css('background-color','gray');
         $("#number-to-guess").text(genRandRange(min2, max2));
         return arr;
     }
@@ -26,8 +27,10 @@ $(document).ready(function() {
     function cum_sum_apply(sum) {
         $("#cum-sum").text(sum);
         if (sum === parseInt($("#number-to-guess").text())) {
+            $("#score-button").css('background-color','green');
             alert("You Win!!");
         } else if (sum > parseInt($("#number-to-guess").text())) {
+            $("#score-button").css('background-color','red');
             alert("You Lose..");
         }
     }
@@ -41,22 +44,22 @@ $(document).ready(function() {
 
     crystal_vals = resetVals(crystal_vals, crystal_min, crystal_max, sum_min, sum_max);
 
-    $("#crystal-1").on("click", function (){
+    $("#crystal-0").on("click", function (){
         cum_sum += crystal_vals[0];
         cum_sum_apply(cum_sum);
     });
 
-    $("#crystal-2").on("click", function (){
+    $("#crystal-1").on("click", function (){
         cum_sum += crystal_vals[1];
         cum_sum_apply(cum_sum);
     });
 
-    $("#crystal-3").on("click", function (){
+    $("#crystal-2").on("click", function (){
         cum_sum += crystal_vals[2];
         cum_sum_apply(cum_sum);
     });
 
-    $("#crystal-4").on("click", function (){
+    $("#crystal-3").on("click", function (){
         cum_sum += crystal_vals[3];
         cum_sum_apply(cum_sum);
     });
@@ -67,4 +70,3 @@ $(document).ready(function() {
     });
 
 });
-
